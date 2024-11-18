@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Notas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container form-container">
+        <h2>Formulario de Notas</h2>
+        <form action="/ejercicio1" method="POST">
+            <label for="nota1">Nota 1:</label>
+            <input type="number" id="nota1" name="nota1" min="10" max="70" required>
+            <label for="nota2">Nota 2:</label>
+            <input type="number" id="nota2" name="nota2" min="10" max="70" required>
+            <label for="nota3">Nota 3:</label>
+            <input type="number" id="nota3" name="nota3" min="10" max="70" required>
+            <label for="asistencia">Asistencia (%):</label>
+            <input type="number" id="asistencia" name="asistencia" min="0" max="100" required>
+            <button type="submit" class="btn">Enviar</button>
+        </form>
+
+        {% if promedio is not none %}
+        <div class="result">
+            <p>Promedio: <b>{{ promedio }}</b></p>
+            <p>Estado: <b>{{ 'Aprobado' if aprobado else 'Reprobado' }}</b></p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
